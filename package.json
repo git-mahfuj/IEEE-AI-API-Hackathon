@@ -2,12 +2,29 @@
   "name": "IEEE-AI-API-Hackathon",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon dist/src/index.js",
+    "build": "tsc",
+    "start": "node dist/src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@10.23.0"
+  "packageManager": "pnpm@10.23.0",
+  "dependencies": {
+    "@google/genai": "^2.11.0",
+    "@google/generative-ai": "^0.24.1",
+    "body-parse": "^0.1.0",
+    "body-parser": "^2.3.0",
+    "dotenv": "^17.4.2",
+    "ex": "^0.1.4",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.1.1"
+  }
 }
