@@ -1,6 +1,7 @@
 import { asyncHandler } from "../utils/AsyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
-import { generateGeminiResponse } from "../utils/AIHelper.js";
+import { ApiError } from "../utils/ApiError.js";
+import { analyzeReportWithAI } from "../utils/AIHelper.js";
 import { type Request, type Response } from "express";
 
 const geminiResponseController = asyncHandler(
@@ -10,10 +11,10 @@ const geminiResponseController = asyncHandler(
     if (!question) {
       return res
         .status(400)
-        .json({ success: false, message: "Question is required!" });
+        .json(new ApiError(400 , "Please Provide Questions"));
     }
 
-    const result = await generateGeminiResponse(question);
+    const result = await analyzeReportWithAI(question);
 
     return res
       .status(200)
